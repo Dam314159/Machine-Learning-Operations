@@ -1,0 +1,13 @@
+{
+  "base_url": "/",
+  "hostname": "localhost",
+  "password": false,
+  "pid": 28032,
+  "port": 8888,
+  "root_dir": "E:\\testIT3385\\IT3385_Env_11\\notebooks",
+  "secure": false,
+  "sock": "",
+  "token": "7b605d0c80df01f8eee2088e57081b1d1190601b9d782ade",
+  "url": "http://localhost:8888/",
+  "version": "2.20.0"
+}
