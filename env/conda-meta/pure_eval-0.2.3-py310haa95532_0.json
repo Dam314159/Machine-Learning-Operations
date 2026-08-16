@@ -1,0 +1,185 @@
+{
+ "_requested_specs": [],
+ "build": "py310haa95532_0",
+ "build_number": 0,
+ "channel": "https://conda.anaconda.org/anaconda/win-64",
+ "constrains": [],
+ "depends": [
+  "python >=3.10,<3.11.0a0"
+ ],
+ "extracted_package_dir": "",
+ "files": [
+  "Lib/site-packages/pure_eval-0.2.3.dist-info/INSTALLER",
+  "Lib/site-packages/pure_eval-0.2.3.dist-info/METADATA",
+  "Lib/site-packages/pure_eval-0.2.3.dist-info/RECORD",
+  "Lib/site-packages/pure_eval-0.2.3.dist-info/REQUESTED",
+  "Lib/site-packages/pure_eval-0.2.3.dist-info/WHEEL",
+  "Lib/site-packages/pure_eval-0.2.3.dist-info/direct_url.json",
+  "Lib/site-packages/pure_eval-0.2.3.dist-info/licenses/LICENSE.txt",
+  "Lib/site-packages/pure_eval-0.2.3.dist-info/top_level.txt",
+  "Lib/site-packages/pure_eval/__init__.py",
+  "Lib/site-packages/pure_eval/__pycache__/__init__.cpython-310.pyc",
+  "Lib/site-packages/pure_eval/__pycache__/core.cpython-310.pyc",
+  "Lib/site-packages/pure_eval/__pycache__/my_getattr_static.cpython-310.pyc",
+  "Lib/site-packages/pure_eval/__pycache__/utils.cpython-310.pyc",
+  "Lib/site-packages/pure_eval/__pycache__/version.cpython-310.pyc",
+  "Lib/site-packages/pure_eval/core.py",
+  "Lib/site-packages/pure_eval/my_getattr_static.py",
+  "Lib/site-packages/pure_eval/py.typed",
+  "Lib/site-packages/pure_eval/utils.py",
+  "Lib/site-packages/pure_eval/version.py"
+ ],
+ "fn": "pure_eval-0.2.3-py310haa95532_0.tar.bz2",
+ "license": "MIT",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "bfccfa6fb5d7eccb649bd55984faac8e",
+ "name": "pure_eval",
+ "package_tarball_full_path": "",
+ "paths_data": {
+  "paths": [
+   {
+    "_path": "Lib/site-packages/pure_eval-0.2.3.dist-info/INSTALLER",
+    "path_type": "hardlink",
+    "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+    "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+    "size_in_bytes": 5
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval-0.2.3.dist-info/METADATA",
+    "path_type": "hardlink",
+    "sha256": "84e0dc94bedeeef09cfe55a5f89d3778055043090ede0c6ab381062b5fc2e207",
+    "sha256_in_prefix": "84e0dc94bedeeef09cfe55a5f89d3778055043090ede0c6ab381062b5fc2e207",
+    "size_in_bytes": 6527
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval-0.2.3.dist-info/RECORD",
+    "path_type": "hardlink",
+    "sha256": "ea4373024d2d8ba17e7afcbfbdd8b195cb229bad4382ba516196f5698edd3769",
+    "sha256_in_prefix": "ea4373024d2d8ba17e7afcbfbdd8b195cb229bad4382ba516196f5698edd3769",
+    "size_in_bytes": 1410
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval-0.2.3.dist-info/REQUESTED",
+    "path_type": "hardlink",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size_in_bytes": 0
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval-0.2.3.dist-info/WHEEL",
+    "path_type": "hardlink",
+    "sha256": "95353a07a7887d8a224094d935cf9fc9a47a0692fa7a14f3537c466319f69fc9",
+    "sha256_in_prefix": "95353a07a7887d8a224094d935cf9fc9a47a0692fa7a14f3537c466319f69fc9",
+    "size_in_bytes": 91
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval-0.2.3.dist-info/direct_url.json",
+    "path_type": "hardlink",
+    "sha256": "0e914f0f272e56a0aa559864f0be6fc4295b8b01c3d485a31781496b75fddb9c",
+    "sha256_in_prefix": "0e914f0f272e56a0aa559864f0be6fc4295b8b01c3d485a31781496b75fddb9c",
+    "size_in_bytes": 87
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval-0.2.3.dist-info/licenses/LICENSE.txt",
+    "path_type": "hardlink",
+    "sha256": "a476a2cb0ef4c41450340a577a28b91ac4c7f669136b2ee148047fabd5fc4181",
+    "sha256_in_prefix": "a476a2cb0ef4c41450340a577a28b91ac4c7f669136b2ee148047fabd5fc4181",
+    "size_in_bytes": 1066
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval-0.2.3.dist-info/top_level.txt",
+    "path_type": "hardlink",
+    "sha256": "6a3db8bf3c37c1cdd7b0bdd0d2c1e27485fa37b4da562103af547f47841b823a",
+    "sha256_in_prefix": "6a3db8bf3c37c1cdd7b0bdd0d2c1e27485fa37b4da562103af547f47841b823a",
+    "size_in_bytes": 10
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/__init__.py",
+    "path_type": "hardlink",
+    "sha256": "0e91487e2c28901bb3e7e2fc3fe83f8fb86b91b85b160fcf47a17ded41600391",
+    "sha256_in_prefix": "0e91487e2c28901bb3e7e2fc3fe83f8fb86b91b85b160fcf47a17ded41600391",
+    "size_in_bytes": 434
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/__pycache__/__init__.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "ba5d96b56cac00d8baebdc7c99248c927722635c4451d771d649eb6348af59a9",
+    "sha256_in_prefix": "ba5d96b56cac00d8baebdc7c99248c927722635c4451d771d649eb6348af59a9",
+    "size_in_bytes": 459
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/__pycache__/core.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "4051f6283d80e5e5b96068785f180f908f6061e0c7a6aa666d5e2a07e960b6ec",
+    "sha256_in_prefix": "4051f6283d80e5e5b96068785f180f908f6061e0c7a6aa666d5e2a07e960b6ec",
+    "size_in_bytes": 13049
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/__pycache__/my_getattr_static.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "b902d18bf48dfe5025acfe5003d03c733b95e59242fb8e25299be07c06e95bb6",
+    "sha256_in_prefix": "b902d18bf48dfe5025acfe5003d03c733b95e59242fb8e25299be07c06e95bb6",
+    "size_in_bytes": 3409
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/__pycache__/utils.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "db2f70d2186b15fa4c3aacb0f409d5131a7ca8c80638fe45eb2a143a6088df48",
+    "sha256_in_prefix": "db2f70d2186b15fa4c3aacb0f409d5131a7ca8c80638fe45eb2a143a6088df48",
+    "size_in_bytes": 5486
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/__pycache__/version.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "861f18144ea696c07fc387e21fa61b20938ddca26a6a04e469a308ff8abb1e38",
+    "sha256_in_prefix": "861f18144ea696c07fc387e21fa61b20938ddca26a6a04e469a308ff8abb1e38",
+    "size_in_bytes": 152
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/core.py",
+    "path_type": "hardlink",
+    "sha256": "6f1b215a0855c026b07557eb35d5cba878f950ea5a3f3d5a0240744f7c61ff74",
+    "sha256_in_prefix": "6f1b215a0855c026b07557eb35d5cba878f950ea5a3f3d5a0240744f7c61ff74",
+    "size_in_bytes": 15309
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/my_getattr_static.py",
+    "path_type": "hardlink",
+    "sha256": "e85c0a21b83784b5e063ca2768afcbd65c9124a8cb54d1a082ce52cfaba158c7",
+    "sha256_in_prefix": "e85c0a21b83784b5e063ca2768afcbd65c9124a8cb54d1a082ce52cfaba158c7",
+    "size_in_bytes": 4161
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/py.typed",
+    "path_type": "hardlink",
+    "sha256": "c37c58268ef5cc0ee90e717ae71afabbc14bf20bc9ec674028c2522eebf620f5",
+    "sha256_in_prefix": "c37c58268ef5cc0ee90e717ae71afabbc14bf20bc9ec674028c2522eebf620f5",
+    "size_in_bytes": 68
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/utils.py",
+    "path_type": "hardlink",
+    "sha256": "b0f667d0f022476e3f6e28ec695b67bfb199293d9ac6ff3aac56f7706841ff96",
+    "sha256_in_prefix": "b0f667d0f022476e3f6e28ec695b67bfb199293d9ac6ff3aac56f7706841ff96",
+    "size_in_bytes": 4612
+   },
+   {
+    "_path": "Lib/site-packages/pure_eval/version.py",
+    "path_type": "hardlink",
+    "sha256": "ce86d4cd0f1d9a2eeffdfadb42d8c00b5a5a70d2556f003fddb31a78ba2d04c5",
+    "sha256_in_prefix": "ce86d4cd0f1d9a2eeffdfadb42d8c00b5a5a70d2556f003fddb31a78ba2d04c5",
+    "size_in_bytes": 21
+   }
+  ],
+  "paths_version": 1
+ },
+ "sha256": "113730924bfe8cb16b70a11a1a7c2bcfd26d014ab341ecf6daf97fbd2fc1cec6",
+ "size": 28270,
+ "subdir": "win-64",
+ "timestamp": 1757067109554,
+ "url": "https://conda.anaconda.org/anaconda/win-64/pure_eval-0.2.3-py310haa95532_0.tar.bz2",
+ "version": "0.2.3"
+}

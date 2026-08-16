@@ -1,0 +1,335 @@
+{
+ "_requested_specs": [],
+ "build": "pyh6dadd2b_1",
+ "build_number": 1,
+ "channel": "https://conda.anaconda.org/conda-forge/noarch",
+ "constrains": [],
+ "depends": [
+  "__win",
+  "pywin32",
+  "python >=3.10",
+  "python"
+ ],
+ "extracted_package_dir": "",
+ "files": [
+  "etc/conda/test-files/send2trash/1/tests/conftest.py",
+  "etc/conda/test-files/send2trash/1/tests/test_plat_other.py",
+  "etc/conda/test-files/send2trash/1/tests/test_plat_win.py",
+  "etc/conda/test-files/send2trash/1/tests/test_script_main.py",
+  "Lib/site-packages/send2trash/__init__.py",
+  "Lib/site-packages/send2trash/__main__.py",
+  "Lib/site-packages/send2trash/exceptions.py",
+  "Lib/site-packages/send2trash/mac/__init__.py",
+  "Lib/site-packages/send2trash/mac/legacy.py",
+  "Lib/site-packages/send2trash/mac/modern.py",
+  "Lib/site-packages/send2trash/plat_gio.py",
+  "Lib/site-packages/send2trash/plat_other.py",
+  "Lib/site-packages/send2trash/util.py",
+  "Lib/site-packages/send2trash/win/IFileOperationProgressSink.py",
+  "Lib/site-packages/send2trash/win/__init__.py",
+  "Lib/site-packages/send2trash/win/legacy.py",
+  "Lib/site-packages/send2trash/win/modern.py",
+  "Lib/site-packages/send2trash-2.1.0.dist-info/INSTALLER",
+  "Lib/site-packages/send2trash-2.1.0.dist-info/METADATA",
+  "Lib/site-packages/send2trash-2.1.0.dist-info/RECORD",
+  "Lib/site-packages/send2trash-2.1.0.dist-info/REQUESTED",
+  "Lib/site-packages/send2trash-2.1.0.dist-info/WHEEL",
+  "Lib/site-packages/send2trash-2.1.0.dist-info/direct_url.json",
+  "Lib/site-packages/send2trash-2.1.0.dist-info/entry_points.txt",
+  "Lib/site-packages/send2trash-2.1.0.dist-info/licenses/LICENSE",
+  "Lib/site-packages/send2trash-2.1.0.dist-info/top_level.txt",
+  "Lib/site-packages/send2trash/__pycache__/__init__.cpython-310.pyc",
+  "Lib/site-packages/send2trash/__pycache__/__main__.cpython-310.pyc",
+  "Lib/site-packages/send2trash/__pycache__/exceptions.cpython-310.pyc",
+  "Lib/site-packages/send2trash/mac/__pycache__/__init__.cpython-310.pyc",
+  "Lib/site-packages/send2trash/mac/__pycache__/legacy.cpython-310.pyc",
+  "Lib/site-packages/send2trash/mac/__pycache__/modern.cpython-310.pyc",
+  "Lib/site-packages/send2trash/__pycache__/plat_gio.cpython-310.pyc",
+  "Lib/site-packages/send2trash/__pycache__/plat_other.cpython-310.pyc",
+  "Lib/site-packages/send2trash/__pycache__/util.cpython-310.pyc",
+  "Lib/site-packages/send2trash/win/__pycache__/IFileOperationProgressSink.cpython-310.pyc",
+  "Lib/site-packages/send2trash/win/__pycache__/__init__.cpython-310.pyc",
+  "Lib/site-packages/send2trash/win/__pycache__/legacy.cpython-310.pyc",
+  "Lib/site-packages/send2trash/win/__pycache__/modern.cpython-310.pyc",
+  "Scripts/send2trash-script.py",
+  "Scripts/send2trash.exe"
+ ],
+ "fn": "send2trash-2.1.0-pyh6dadd2b_1.conda",
+ "license": "BSD-3-Clause",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "6ac53f3fff2c416d63511843a04646fa",
+ "name": "send2trash",
+ "noarch": "python",
+ "package_tarball_full_path": "",
+ "package_type": "noarch_python",
+ "paths_data": {
+  "paths": [
+   {
+    "_path": "etc/conda/test-files/send2trash/1/tests/conftest.py",
+    "path_type": "hardlink",
+    "sha256": "a83c29dd2d912a6d601685333539296250d9676fc379c4d4b2b835fde844b67a",
+    "sha256_in_prefix": "a83c29dd2d912a6d601685333539296250d9676fc379c4d4b2b835fde844b67a",
+    "size_in_bytes": 960
+   },
+   {
+    "_path": "etc/conda/test-files/send2trash/1/tests/test_plat_other.py",
+    "path_type": "hardlink",
+    "sha256": "1b9b2de6f2ec37cea4e74377af80be45745ab62f32aafcc5e1a6587db2a53c38",
+    "sha256_in_prefix": "1b9b2de6f2ec37cea4e74377af80be45745ab62f32aafcc5e1a6587db2a53c38",
+    "size_in_bytes": 6589
+   },
+   {
+    "_path": "etc/conda/test-files/send2trash/1/tests/test_plat_win.py",
+    "path_type": "hardlink",
+    "sha256": "e7a453dddef8127197a775c0a0cd5c1ec672fb6e5e24e635b7e72c5acfb5cc58",
+    "sha256_in_prefix": "e7a453dddef8127197a775c0a0cd5c1ec672fb6e5e24e635b7e72c5acfb5cc58",
+    "size_in_bytes": 5730
+   },
+   {
+    "_path": "etc/conda/test-files/send2trash/1/tests/test_script_main.py",
+    "path_type": "hardlink",
+    "sha256": "b95280c3c53ae44b186427b26ae76b21c14e53d77239cdaf4165a06dd0dd3a1c",
+    "sha256_in_prefix": "b95280c3c53ae44b186427b26ae76b21c14e53d77239cdaf4165a06dd0dd3a1c",
+    "size_in_bytes": 397
+   },
+   {
+    "_path": "site-packages/send2trash/__init__.py",
+    "path_type": "hardlink",
+    "sha256": "f4cdaae832a866aa9348e8d7a1ccf26c0f6f21e5f213d2842eec3c6a293b00b4",
+    "sha256_in_prefix": "f4cdaae832a866aa9348e8d7a1ccf26c0f6f21e5f213d2842eec3c6a293b00b4",
+    "size_in_bytes": 952
+   },
+   {
+    "_path": "site-packages/send2trash/__main__.py",
+    "path_type": "hardlink",
+    "sha256": "897f54a0bf43f7acc859eddb79d21ec7608054d5e500263837f89f4b02912265",
+    "sha256_in_prefix": "897f54a0bf43f7acc859eddb79d21ec7608054d5e500263837f89f4b02912265",
+    "size_in_bytes": 1132
+   },
+   {
+    "_path": "site-packages/send2trash/exceptions.py",
+    "path_type": "hardlink",
+    "sha256": "6aaa44b60f6c87a0023a550d0b33814954f03bc2bf207ca4cb1f913db8bc1b8b",
+    "sha256_in_prefix": "6aaa44b60f6c87a0023a550d0b33814954f03bc2bf207ca4cb1f913db8bc1b8b",
+    "size_in_bytes": 887
+   },
+   {
+    "_path": "site-packages/send2trash/mac/__init__.py",
+    "path_type": "hardlink",
+    "sha256": "e9e72f6ec2710cef090697c74b8efc1933bb2a1b387d714d4f36e5b046251736",
+    "sha256_in_prefix": "e9e72f6ec2710cef090697c74b8efc1933bb2a1b387d714d4f36e5b046251736",
+    "size_in_bytes": 836
+   },
+   {
+    "_path": "site-packages/send2trash/mac/legacy.py",
+    "path_type": "hardlink",
+    "sha256": "070dae5f01b1bc1ec0d20148a6186c8a15e9732ea80b808ace5cbe98581ceab7",
+    "sha256_in_prefix": "070dae5f01b1bc1ec0d20148a6186c8a15e9732ea80b808ace5cbe98581ceab7",
+    "size_in_bytes": 1852
+   },
+   {
+    "_path": "site-packages/send2trash/mac/modern.py",
+    "path_type": "hardlink",
+    "sha256": "178409947e6730f6d9abfc3cad397080f960069e35ece5b70615cd9a90b06146",
+    "sha256_in_prefix": "178409947e6730f6d9abfc3cad397080f960069e35ece5b70615cd9a90b06146",
+    "size_in_bytes": 993
+   },
+   {
+    "_path": "site-packages/send2trash/plat_gio.py",
+    "path_type": "hardlink",
+    "sha256": "bac544392b22d94a6f2916d94d47fbad172eb3155e1888be79b448d46b9b2b8a",
+    "sha256_in_prefix": "bac544392b22d94a6f2916d94d47fbad172eb3155e1888be79b448d46b9b2b8a",
+    "size_in_bytes": 934
+   },
+   {
+    "_path": "site-packages/send2trash/plat_other.py",
+    "path_type": "hardlink",
+    "sha256": "f92df2dc260851ab9e546321f9602b318c0a10e5f20949e19c91259bd52bc1e4",
+    "sha256_in_prefix": "f92df2dc260851ab9e546321f9602b318c0a10e5f20949e19c91259bd52bc1e4",
+    "size_in_bytes": 6749
+   },
+   {
+    "_path": "site-packages/send2trash/util.py",
+    "path_type": "hardlink",
+    "sha256": "6fbc187e63a9595b6e4558767b783d80761cf6d1327a9d38efd4f8fd2b55db01",
+    "sha256_in_prefix": "6fbc187e63a9595b6e4558767b783d80761cf6d1327a9d38efd4f8fd2b55db01",
+    "size_in_bytes": 601
+   },
+   {
+    "_path": "site-packages/send2trash/win/IFileOperationProgressSink.py",
+    "path_type": "hardlink",
+    "sha256": "04a621f3f8f017daeee07e31a2930835ea141b07af29d6abdab995dc2ed44095",
+    "sha256_in_prefix": "04a621f3f8f017daeee07e31a2930835ea141b07af29d6abdab995dc2ed44095",
+    "size_in_bytes": 1584
+   },
+   {
+    "_path": "site-packages/send2trash/win/__init__.py",
+    "path_type": "hardlink",
+    "sha256": "3ee8c885df8a201660f057ec27538cc8e78c37e49fc8fb7e3ca198e2eee24f9e",
+    "sha256_in_prefix": "3ee8c885df8a201660f057ec27538cc8e78c37e49fc8fb7e3ca198e2eee24f9e",
+    "size_in_bytes": 796
+   },
+   {
+    "_path": "site-packages/send2trash/win/legacy.py",
+    "path_type": "hardlink",
+    "sha256": "113af933402272244ff8e9edf894585b84d1c765c4763aff8e5a4cfbbd04cbee",
+    "sha256_in_prefix": "113af933402272244ff8e9edf894585b84d1c765c4763aff8e5a4cfbbd04cbee",
+    "size_in_bytes": 7233
+   },
+   {
+    "_path": "site-packages/send2trash/win/modern.py",
+    "path_type": "hardlink",
+    "sha256": "3938b3aa844b7a133d850acc4760722fe25270baea7da0e6223865ee6163c7e0",
+    "sha256_in_prefix": "3938b3aa844b7a133d850acc4760722fe25270baea7da0e6223865ee6163c7e0",
+    "size_in_bytes": 2748
+   },
+   {
+    "_path": "site-packages/send2trash-2.1.0.dist-info/INSTALLER",
+    "path_type": "hardlink",
+    "sha256": "bc33022edcb7639ff53355b4e91dade50a0bbf0299efeb6171d1ec0ba5029cfc",
+    "sha256_in_prefix": "bc33022edcb7639ff53355b4e91dade50a0bbf0299efeb6171d1ec0ba5029cfc",
+    "size_in_bytes": 6
+   },
+   {
+    "_path": "site-packages/send2trash-2.1.0.dist-info/METADATA",
+    "path_type": "hardlink",
+    "sha256": "04ea43f17e94fa7c08678432c37d5f608a4ca4384b868c8f53d25ec42da44533",
+    "sha256_in_prefix": "04ea43f17e94fa7c08678432c37d5f608a4ca4384b868c8f53d25ec42da44533",
+    "size_in_bytes": 4122
+   },
+   {
+    "_path": "site-packages/send2trash-2.1.0.dist-info/RECORD",
+    "path_type": "hardlink",
+    "sha256": "3290a944de903a9b7a41e37ab53cd7f38108132849b07737534bf8ce5a6308f0",
+    "sha256_in_prefix": "3290a944de903a9b7a41e37ab53cd7f38108132849b07737534bf8ce5a6308f0",
+    "size_in_bytes": 2654
+   },
+   {
+    "_path": "site-packages/send2trash-2.1.0.dist-info/REQUESTED",
+    "path_type": "hardlink",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size_in_bytes": 0
+   },
+   {
+    "_path": "site-packages/send2trash-2.1.0.dist-info/WHEEL",
+    "path_type": "hardlink",
+    "sha256": "6027f0606398322e49870d9f538c8d83012bc9b6f6217e4f13004a57865b741a",
+    "sha256_in_prefix": "6027f0606398322e49870d9f538c8d83012bc9b6f6217e4f13004a57865b741a",
+    "size_in_bytes": 91
+   },
+   {
+    "_path": "site-packages/send2trash-2.1.0.dist-info/direct_url.json",
+    "path_type": "hardlink",
+    "sha256": "4107524ba4de966def4d641a2a2b5f579a1f70500c0462b460e1c7669dc9f3bc",
+    "sha256_in_prefix": "4107524ba4de966def4d641a2a2b5f579a1f70500c0462b460e1c7669dc9f3bc",
+    "size_in_bytes": 86
+   },
+   {
+    "_path": "site-packages/send2trash-2.1.0.dist-info/entry_points.txt",
+    "path_type": "hardlink",
+    "sha256": "1b04806861a0226fe52ffb3db72976cb7c389c1e65b0c824e1ff4633c7cb91d8",
+    "sha256_in_prefix": "1b04806861a0226fe52ffb3db72976cb7c389c1e65b0c824e1ff4633c7cb91d8",
+    "size_in_bytes": 56
+   },
+   {
+    "_path": "site-packages/send2trash-2.1.0.dist-info/licenses/LICENSE",
+    "path_type": "hardlink",
+    "sha256": "cfab49595c96bb2b25854e4e433305f67a8eb09cb885c53401ced9784d5feedf",
+    "sha256_in_prefix": "cfab49595c96bb2b25854e4e433305f67a8eb09cb885c53401ced9784d5feedf",
+    "size_in_bytes": 1504
+   },
+   {
+    "_path": "site-packages/send2trash-2.1.0.dist-info/top_level.txt",
+    "path_type": "hardlink",
+    "sha256": "cf392704b7662560ab715811cf6adc14daa287d6b7cb531e9ae4c9ca7bd8ca8c",
+    "sha256_in_prefix": "cf392704b7662560ab715811cf6adc14daa287d6b7cb531e9ae4c9ca7bd8ca8c",
+    "size_in_bytes": 11
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/__pycache__/__init__.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 617
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/__pycache__/__main__.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 1042
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/__pycache__/exceptions.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 1234
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/mac/__pycache__/__init__.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 593
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/mac/__pycache__/legacy.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 1748
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/mac/__pycache__/modern.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 935
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/__pycache__/plat_gio.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 682
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/__pycache__/plat_other.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 4384
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/__pycache__/util.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 565
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/win/__pycache__/IFileOperationProgressSink.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 1577
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/win/__pycache__/__init__.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 435
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/win/__pycache__/legacy.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 3872
+   },
+   {
+    "_path": "Lib/site-packages/send2trash/win/__pycache__/modern.cpython-310.pyc",
+    "path_type": "pyc_file",
+    "size_in_bytes": 1895
+   },
+   {
+    "_path": "Scripts/send2trash-script.py",
+    "path_type": "windows_python_entry_point_script",
+    "size_in_bytes": 211
+   },
+   {
+    "_path": "Scripts/send2trash.exe",
+    "path_type": "windows_python_entry_point_exe"
+   }
+  ],
+  "paths_version": 1
+ },
+ "sha256": "305446a0b018f285351300463653d3d3457687270e20eda37417b12ee386ef76",
+ "size": 22864,
+ "subdir": "noarch",
+ "timestamp": 1770937641143,
+ "url": "https://conda.anaconda.org/conda-forge/noarch/send2trash-2.1.0-pyh6dadd2b_1.conda",
+ "version": "2.1.0"
+}

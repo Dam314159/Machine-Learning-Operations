@@ -1,0 +1,204 @@
+{
+ "_requested_specs": [],
+ "build": "py310haa95532_0",
+ "build_number": 0,
+ "channel": "https://conda.anaconda.org/anaconda/win-64",
+ "constrains": [],
+ "depends": [
+  "asttokens >=2.1.0",
+  "executing >=1.2.0",
+  "pure_eval",
+  "python >=3.10,<3.11.0a0"
+ ],
+ "extracted_package_dir": "",
+ "files": [
+  "Lib/site-packages/stack_data-0.6.3.dist-info/INSTALLER",
+  "Lib/site-packages/stack_data-0.6.3.dist-info/METADATA",
+  "Lib/site-packages/stack_data-0.6.3.dist-info/RECORD",
+  "Lib/site-packages/stack_data-0.6.3.dist-info/REQUESTED",
+  "Lib/site-packages/stack_data-0.6.3.dist-info/WHEEL",
+  "Lib/site-packages/stack_data-0.6.3.dist-info/direct_url.json",
+  "Lib/site-packages/stack_data-0.6.3.dist-info/licenses/LICENSE.txt",
+  "Lib/site-packages/stack_data-0.6.3.dist-info/top_level.txt",
+  "Lib/site-packages/stack_data/__init__.py",
+  "Lib/site-packages/stack_data/__pycache__/__init__.cpython-310.pyc",
+  "Lib/site-packages/stack_data/__pycache__/core.cpython-310.pyc",
+  "Lib/site-packages/stack_data/__pycache__/formatting.cpython-310.pyc",
+  "Lib/site-packages/stack_data/__pycache__/serializing.cpython-310.pyc",
+  "Lib/site-packages/stack_data/__pycache__/utils.cpython-310.pyc",
+  "Lib/site-packages/stack_data/__pycache__/version.cpython-310.pyc",
+  "Lib/site-packages/stack_data/core.py",
+  "Lib/site-packages/stack_data/formatting.py",
+  "Lib/site-packages/stack_data/py.typed",
+  "Lib/site-packages/stack_data/serializing.py",
+  "Lib/site-packages/stack_data/utils.py",
+  "Lib/site-packages/stack_data/version.py"
+ ],
+ "fn": "stack_data-0.6.3-py310haa95532_0.tar.bz2",
+ "license": "MIT",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "cf955a0d11c9f9ca9c27359585e7f44b",
+ "name": "stack_data",
+ "package_tarball_full_path": "",
+ "paths_data": {
+  "paths": [
+   {
+    "_path": "Lib/site-packages/stack_data-0.6.3.dist-info/INSTALLER",
+    "path_type": "hardlink",
+    "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+    "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+    "size_in_bytes": 5
+   },
+   {
+    "_path": "Lib/site-packages/stack_data-0.6.3.dist-info/METADATA",
+    "path_type": "hardlink",
+    "sha256": "78e6c7e7133fbcbaa113d9e9d98b4fea0b5f6428d04da42a7fc764ec0bb90d01",
+    "sha256_in_prefix": "78e6c7e7133fbcbaa113d9e9d98b4fea0b5f6428d04da42a7fc764ec0bb90d01",
+    "size_in_bytes": 18899
+   },
+   {
+    "_path": "Lib/site-packages/stack_data-0.6.3.dist-info/RECORD",
+    "path_type": "hardlink",
+    "sha256": "7e54c387e3174b77c90e1626409fda61b09bdb170d8430b7a3cce5c6dfbdeed6",
+    "sha256_in_prefix": "7e54c387e3174b77c90e1626409fda61b09bdb170d8430b7a3cce5c6dfbdeed6",
+    "size_in_bytes": 1553
+   },
+   {
+    "_path": "Lib/site-packages/stack_data-0.6.3.dist-info/REQUESTED",
+    "path_type": "hardlink",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size_in_bytes": 0
+   },
+   {
+    "_path": "Lib/site-packages/stack_data-0.6.3.dist-info/WHEEL",
+    "path_type": "hardlink",
+    "sha256": "95353a07a7887d8a224094d935cf9fc9a47a0692fa7a14f3537c466319f69fc9",
+    "sha256_in_prefix": "95353a07a7887d8a224094d935cf9fc9a47a0692fa7a14f3537c466319f69fc9",
+    "size_in_bytes": 91
+   },
+   {
+    "_path": "Lib/site-packages/stack_data-0.6.3.dist-info/direct_url.json",
+    "path_type": "hardlink",
+    "sha256": "830abd902c4a776f23615f3c5ba63fac41ec5a4183ff19cfdeeee719ee8b2b54",
+    "sha256_in_prefix": "830abd902c4a776f23615f3c5ba63fac41ec5a4183ff19cfdeeee719ee8b2b54",
+    "size_in_bytes": 88
+   },
+   {
+    "_path": "Lib/site-packages/stack_data-0.6.3.dist-info/licenses/LICENSE.txt",
+    "path_type": "hardlink",
+    "sha256": "a476a2cb0ef4c41450340a577a28b91ac4c7f669136b2ee148047fabd5fc4181",
+    "sha256_in_prefix": "a476a2cb0ef4c41450340a577a28b91ac4c7f669136b2ee148047fabd5fc4181",
+    "size_in_bytes": 1066
+   },
+   {
+    "_path": "Lib/site-packages/stack_data-0.6.3.dist-info/top_level.txt",
+    "path_type": "hardlink",
+    "sha256": "21aacf058618f5e7c99008149eeca43143f39d047e79b590618b1072a606c42a",
+    "sha256_in_prefix": "21aacf058618f5e7c99008149eeca43143f39d047e79b590618b1072a606c42a",
+    "size_in_bytes": 11
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/__init__.py",
+    "path_type": "hardlink",
+    "sha256": "a02d0f23f72687a4767af1c52e05056eb31912017f62f0a1ea91d76cfba83d2c",
+    "sha256_in_prefix": "a02d0f23f72687a4767af1c52e05056eb31912017f62f0a1ea91d76cfba83d2c",
+    "size_in_bytes": 419
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/__pycache__/__init__.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "20770e292f330de40e141ee560e1a9df3a7bf0cef0f52927c9fd8ace971b3629",
+    "sha256_in_prefix": "20770e292f330de40e141ee560e1a9df3a7bf0cef0f52927c9fd8ace971b3629",
+    "size_in_bytes": 628
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/__pycache__/core.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "d0da77b225ad84d485ed47f1e8d4a4cc2260be3259ad886df86a511aa58d2c27",
+    "sha256_in_prefix": "d0da77b225ad84d485ed47f1e8d4a4cc2260be3259ad886df86a511aa58d2c27",
+    "size_in_bytes": 32373
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/__pycache__/formatting.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "7960f655aecc72b59f1280c3030663cf1f51659be09a22749d2ffa0393515378",
+    "sha256_in_prefix": "7960f655aecc72b59f1280c3030663cf1f51659be09a22749d2ffa0393515378",
+    "size_in_bytes": 6976
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/__pycache__/serializing.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "45e4cc9d00d322a8bf4528de686f7159100855c30234582ca96d8ede66b1bab1",
+    "sha256_in_prefix": "45e4cc9d00d322a8bf4528de686f7159100855c30234582ca96d8ede66b1bab1",
+    "size_in_bytes": 6063
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/__pycache__/utils.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "08cb0cb12f14a45f1f43c01c8473aad976bef41c1eab20515cf1c345cc0a5e88",
+    "sha256_in_prefix": "08cb0cb12f14a45f1f43c01c8473aad976bef41c1eab20515cf1c345cc0a5e88",
+    "size_in_bytes": 7013
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/__pycache__/version.cpython-310.pyc",
+    "path_type": "hardlink",
+    "sha256": "dc51af369b581a8b3cf3cdc7115857950646205051cd9ab2181e0ea40b91d8ce",
+    "sha256_in_prefix": "dc51af369b581a8b3cf3cdc7115857950646205051cd9ab2181e0ea40b91d8ce",
+    "size_in_bytes": 153
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/core.py",
+    "path_type": "hardlink",
+    "sha256": "12bf047de33bb1c3489791baa6645219a26ca59bc7c8c18b81def4a970e7065e",
+    "sha256_in_prefix": "12bf047de33bb1c3489791baa6645219a26ca59bc7c8c18b81def4a970e7065e",
+    "size_in_bytes": 33355
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/formatting.py",
+    "path_type": "hardlink",
+    "sha256": "74889ac38ec7e0f2ec5d946c782d231278a3e5116cf7c940aa5f2bec35784a5d",
+    "sha256_in_prefix": "74889ac38ec7e0f2ec5d946c782d231278a3e5116cf7c940aa5f2bec35784a5d",
+    "size_in_bytes": 8508
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/py.typed",
+    "path_type": "hardlink",
+    "sha256": "e64f0169cbc512f44e3433509ba153b23e43c13f293199f20a4ec520770b92ff",
+    "sha256_in_prefix": "e64f0169cbc512f44e3433509ba153b23e43c13f293199f20a4ec520770b92ff",
+    "size_in_bytes": 73
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/serializing.py",
+    "path_type": "hardlink",
+    "sha256": "b402695ca71838019d03ed24f10026257673713d9428999e1c2002fde672b4ed",
+    "sha256_in_prefix": "b402695ca71838019d03ed24f10026257673713d9428999e1c2002fde672b4ed",
+    "size_in_bytes": 6468
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/utils.py",
+    "path_type": "hardlink",
+    "sha256": "9c7939cddde3cff96db3a9dfff19a66d529320ce5cc112bae458a95f75fe8323",
+    "sha256_in_prefix": "9c7939cddde3cff96db3a9dfff19a66d529320ce5cc112bae458a95f75fe8323",
+    "size_in_bytes": 5898
+   },
+   {
+    "_path": "Lib/site-packages/stack_data/version.py",
+    "path_type": "hardlink",
+    "sha256": "299d9af9e721cc337e3df61a188001da1c46366ffd5066a2b1b6c226ca64f667",
+    "sha256_in_prefix": "299d9af9e721cc337e3df61a188001da1c46366ffd5066a2b1b6c226ca64f667",
+    "size_in_bytes": 23
+   }
+  ],
+  "paths_version": 1
+ },
+ "sha256": "cfbd746be170e60c003b2346a83486117a8a62801a7a3422d249b6e90800e06e",
+ "size": 53765,
+ "subdir": "win-64",
+ "timestamp": 1757067083583,
+ "url": "https://conda.anaconda.org/anaconda/win-64/stack_data-0.6.3-py310haa95532_0.tar.bz2",
+ "version": "0.6.3"
+}

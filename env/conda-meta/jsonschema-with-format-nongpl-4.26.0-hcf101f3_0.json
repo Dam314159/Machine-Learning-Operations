@@ -1,0 +1,42 @@
+{
+ "_requested_specs": [],
+ "build": "hcf101f3_0",
+ "build_number": 0,
+ "channel": "https://conda.anaconda.org/conda-forge/noarch",
+ "constrains": [],
+ "depends": [
+  "jsonschema >=4.26.0,<4.26.1.0a0",
+  "fqdn",
+  "idna",
+  "isoduration",
+  "jsonpointer >1.13",
+  "rfc3339-validator",
+  "rfc3986-validator >0.1.0",
+  "rfc3987-syntax >=1.1.0",
+  "uri-template",
+  "webcolors >=24.6.0"
+ ],
+ "extracted_package_dir": "",
+ "files": [],
+ "fn": "jsonschema-with-format-nongpl-4.26.0-hcf101f3_0.conda",
+ "license": "MIT",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "8368d58342d0825f0843dc6acdd0c483",
+ "name": "jsonschema-with-format-nongpl",
+ "noarch": "generic",
+ "package_tarball_full_path": "",
+ "package_type": "noarch_generic",
+ "paths_data": {
+  "paths": [],
+  "paths_version": 1
+ },
+ "sha256": "6886fc61e4e4edd38fd38729976b134e8bd2143f7fce56cc80d7ac7bac99bce1",
+ "size": 4740,
+ "subdir": "noarch",
+ "timestamp": 1767839954258,
+ "url": "https://conda.anaconda.org/conda-forge/noarch/jsonschema-with-format-nongpl-4.26.0-hcf101f3_0.conda",
+ "version": "4.26.0"
+}

@@ -1,0 +1,32 @@
+{
+ "_requested_specs": [],
+ "build": "py310haa95532_0",
+ "build_number": 0,
+ "channel": "https://conda.anaconda.org/anaconda/win-64",
+ "constrains": [],
+ "depends": [
+  "python >=3.10,<3.11.0a0",
+  "typing_extensions 4.15.0 py310haa95532_0"
+ ],
+ "extracted_package_dir": "",
+ "files": [],
+ "fn": "typing-extensions-4.15.0-py310haa95532_0.tar.bz2",
+ "license": "PSF-2.0",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "b02dcf0af865ac8331b335a29a49c14d",
+ "name": "typing-extensions",
+ "package_tarball_full_path": "",
+ "paths_data": {
+  "paths": [],
+  "paths_version": 1
+ },
+ "sha256": "72667741205012b4a40a245afef11ea55f568beb40f7b0833caf0735341b9298",
+ "size": 12020,
+ "subdir": "win-64",
+ "timestamp": 1756281344566,
+ "url": "https://conda.anaconda.org/anaconda/win-64/typing-extensions-4.15.0-py310haa95532_0.tar.bz2",
+ "version": "4.15.0"
+}
