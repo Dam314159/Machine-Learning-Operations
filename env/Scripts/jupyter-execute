@@ -1,0 +1,8 @@
+#!/bin/sh
+'''exec' /home/conda/feedstock_root/build_artifacts/nbclient_1780660955275/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl/bin/python "$0" "$@"
+' '''
+import sys
+from nbclient.cli import main
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(main())
