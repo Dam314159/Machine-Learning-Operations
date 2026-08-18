@@ -1,0 +1,1 @@
+This is used to store like filepath, hyperparameters, column names and stuff in .yaml files managed with Hydra
