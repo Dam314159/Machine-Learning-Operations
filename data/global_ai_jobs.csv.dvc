@@ -1,0 +1,5 @@
+outs:
+- md5: d7047abafa236368a3c604fcd6264b22
+  size: 17618851
+  hash: md5
+  path: global_ai_jobs.csv
