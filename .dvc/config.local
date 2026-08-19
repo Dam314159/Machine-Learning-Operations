@@ -1,4 +1,0 @@
-[core]
-    remote = storage
-['remote "storage"']
-    url = C:\Users\damie\OneDrive\Documents\Machine-Learning-Operations\dvc-storage
