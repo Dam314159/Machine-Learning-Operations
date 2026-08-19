@@ -1,0 +1,6 @@
+.venv
+data/global_ai_jobs.csv
+data/healthcare_disease_prediction_dataset.csv
+IT3385 Assignment AY26s1-v01-Release.pdf
+.dvc
+.vscode
