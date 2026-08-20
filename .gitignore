@@ -4,3 +4,5 @@ data/*.csv
 notebooks/logs.log
 notebooks/catboost_info
 IT3385 Assignment AY26s1-v01-Release.pdf
+mlflow.db
+mlruns/
