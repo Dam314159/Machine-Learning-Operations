@@ -1,1 +1,0 @@
-This folder is to put your model training and creation stuff
