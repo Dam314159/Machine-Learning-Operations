@@ -2,4 +2,4 @@ outs:
 - md5: 72cce786a3dec21164f9522f8d005f93
   size: 79138
   hash: md5
-  path: healthcare_disease_prediction_dataset.csv
+  path: bronze_healthcare_disease_prediction_dataset.csv
