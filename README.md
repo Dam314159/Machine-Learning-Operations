@@ -9,3 +9,5 @@ How to set up the environment
    - If it's incorrect, then run `dvc remote modify storage ./dvc-storage` or go into the file `.\.dvc\config` and change `url` to `../dvc-storage`
 5. Run `dvc pull` to get the actual csv files into the `data` folder
 6. Yippee!!!
+
+To get the `requirements.txt`, run `poetry export --format requirements.txt --output requirements.txt`.
