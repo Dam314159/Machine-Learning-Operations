@@ -1,3 +1,4 @@
 bronze_dataset_path: data/bronze_healthcare_disease_prediction_dataset.csv
 silver_dataset_path: data/silver_healthcare_disease_prediction_dataset.csv
 random_state: 67
+train_size: 0.8
