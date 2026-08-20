@@ -1,0 +1,2 @@
+dataset_path: data/global_ai_jobs.csv
+model_path: models/AI_Jobs_model

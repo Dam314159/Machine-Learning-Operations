@@ -1,4 +1,5 @@
 .venv
 .vscode
 data/*.csv
+notebooks/logs.log
 IT3385 Assignment AY26s1-v01-Release.pdf
