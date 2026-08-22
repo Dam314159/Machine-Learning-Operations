@@ -1,6 +1,5 @@
 .venv
 .vscode
-data/*.csv
 notebooks/logs.log
 notebooks/catboost_info
 logs.log
