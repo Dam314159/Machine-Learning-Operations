@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-from hydra import compose, initialize
+from omegaconf import OmegaConf
 from pycaret import classification
 
 
@@ -16,9 +16,7 @@ def load_hydra_config():
     if not conf_dir.exists():
         return None, None
 
-    with initialize(config_dir=str(conf_dir), version_base=None):
-        cfg = compose(config_name="health_prediction_config")
-
+    cfg = OmegaConf.load(conf_dir / "health_prediction_config.yaml")
     return cfg, project_root
 
 
@@ -35,196 +33,194 @@ def get_models(folder_path: Path):
             continue
 
         model_name = entry.stem.replace("_", " ").replace("-", "'")
-        models[model_name] = classification.load_model(entry)
+        models[model_name] = classification.load_model(entry.with_suffix(""))
 
-    return
-
-
-# TODO: Read the rest of the code to see what the purpose of this function is
-# # Load dataset for form values
-# @st.cache_data
-# def get_dropdown_options(dataset_path):
-#     if not os.path.exists(dataset_path):
-#         return None
-#     df = pd.read_csv(dataset_path, sep=None, engine="python")
-#     df.columns = df.columns.str.strip()
-#     for col in df.select_dtypes(include=["object"]).columns:
-#         df[col] = df[col].str.strip()
-#     return df
+    return models
 
 
-# # Load hydra config and project root
-# cfg, project_root = load_hydra_config()
+# Load dataset
+@st.cache_data
+def get_data(dataset_path: Path):
+    if not dataset_path.exists():
+        return None
 
-# # Page UI
-# st.title("Global AI Jobs Salary Predictor")
-# st.markdown("This application predicts the expected **Salary (USD)** for AI and Data professionals based on various job, company, and economic factors.")
+    return pd.read_csv(dataset_path)
 
-# if cfg is None:
-#     st.error("Hydra Configuration file not found at `conf/AI_Jobs_config.yaml`!")
-#     st.stop()
 
-# # Convert relative paths from YAML to absolute paths using the project root
-# abs_model_path = os.path.join(project_root, cfg.model_path)
-# abs_dataset_path = os.path.join(project_root, cfg.dataset_path)
+# Load hydra config and project root
+cfg, project_root = load_hydra_config()
 
-# # Load assets using the absolute paths
-# model = get_model(abs_model_path)
-# df_original = get_dropdown_options(abs_dataset_path)
+# Page UI
+st.title("Healthcare Disease Predictor")
+st.write("This application predicts the whether or not the patient has a certain disease based on age, bmi, pre-existing conditions and lifestyle habits.")
+st.write("DISCLAIMER: This is not meant to be taken as medical advice.")
 
-# if model is None:
-#     st.error(f"Model file not found at `{abs_model_path}.pkl`! Please check your Hydra config path.")
-#     st.stop()
+if cfg is None:
+    st.error("Hydra Configuration file not found at `conf/AI_Jobs_config.yaml`!")
+    st.stop()
 
-# if df_original is None:
-#     st.error(f"Dataset not found at `{abs_dataset_path}`! Please check your Hydra config path.")
-#     st.stop()
+# Convert relative paths from YAML to absolute paths using the project root
+abs_model_path = project_root / cfg.model_path
+abs_dataset_path = project_root / cfg.bronze_dataset_path
 
-# # Use tabs instead of sidebar radio for a cleaner multipage layout
-# tab1, tab2 = st.tabs(["Single Input", "Batch Upload (CSV)"])
+# Load assets using the absolute paths
+models = get_models(abs_model_path)
+data = get_data(abs_dataset_path)
 
-# # Tab 1 - single input prediction
-# with tab1:
-#     st.write("Fill in the job details below to generate a real-time salary prediction.")
+if models is None:
+    st.error(f"Model folder not found at `{abs_model_path}`! Please check your Hydra config path.")
+    st.stop()
 
-#     # Helper function to sync inputs with custom validation
-#     def num_input_slider(label, min_val, max_val, step, key, fmt="%d"):
-#         # Initialize state if missing
-#         if f"{key}_s" not in st.session_state:
-#             st.session_state[f"{key}_s"] = min_val
-#         if f"{key}_n" not in st.session_state:
-#             st.session_state[f"{key}_n"] = min_val
+if data is None:
+    st.error(f"Dataset not found at `{abs_dataset_path}`! Please check your Hydra config path.")
+    st.stop()
 
-#         # Pre-render clamping: Check if the user typed an out-of-bounds value in the previous run
-#         current_val = st.session_state[f"{key}_n"]
-#         clamped = False
-#         clamp_val = current_val
+# Use tabs instead of sidebar radio for a cleaner multipage layout
+tab1, tab2 = st.tabs(["Single Input", "Batch Upload (CSV)"])
 
-#         if current_val > max_val:
-#             clamp_val = max_val
-#             clamped = True
-#         elif current_val < min_val:
-#             clamp_val = min_val
-#             clamped = True
+# Tab 1 - single input prediction
+with tab1:
+    st.write("Fill in the details below to generate a health prediction.")
 
-#         # If it was out of bounds, force the UI state to the clamped value
-#         if clamped:
-#             st.session_state[f"{key}_n"] = clamp_val
-#             st.session_state[f"{key}_s"] = clamp_val
+    # Helper function to sync inputs with custom validation
+    def num_input_slider(label, min_val, max_val, step, key, fmt="%d"):
+        # Initialize state if missing
+        if f"{key}_s" not in st.session_state:
+            st.session_state[f"{key}_s"] = min_val
 
-#         # Callbacks to keep slider and number input synced
-#         def update_num():
-#             st.session_state[f"{key}_n"] = st.session_state[f"{key}_s"]
+        if f"{key}_n" not in st.session_state:
+            st.session_state[f"{key}_n"] = min_val
 
-#         def update_slide():
-#             st.session_state[f"{key}_s"] = st.session_state[f"{key}_n"]
+        # Pre-render clamping: Check if the user typed an out-of-bounds value in the previous run
+        current_val = st.session_state[f"{key}_n"]
+        clamped = False
+        clamp_val = current_val
 
-#         c_slide, c_num = st.columns([0.65, 0.35])
-#         with c_slide:
-#             st.slider(label, min_val, max_val, st.session_state[f"{key}_s"], step=step, key=f"{key}_s", on_change=update_num, format=fmt)
-#         with c_num:
-#             st.number_input(" ", step=step, key=f"{key}_n", on_change=update_slide, format=fmt, label_visibility="collapsed")
+        if current_val > max_val:
+            clamp_val = max_val
+            clamped = True
 
-#         # Show custom error message if a value was just clamped
-#         if clamped:
-#             st.error(f"Value out of range. It has been automatically changed to {clamp_val}.")
+        elif current_val < min_val:
+            clamp_val = min_val
+            clamped = True
 
-#         return st.session_state[f"{key}_n"]
+        # If it was out of bounds, force the UI state to the clamped value
+        if clamped:
+            st.session_state[f"{key}_n"] = clamp_val
+            st.session_state[f"{key}_s"] = clamp_val
 
-#     col1, col2, col3, col4 = st.columns(4)
-#     with col1:
-#         country = st.selectbox("Country", options=df_original["country"].unique())
-#         job_role = st.selectbox("Job Role", options=df_original["job_role"].unique())
-#         ai_spec = st.selectbox("AI Specialization", options=df_original["ai_specialization"].unique())
-#         exp_level = st.selectbox("Experience Level", options=["Entry", "Mid", "Senior", "Lead"])
-#         exp_years = num_input_slider("Years of Experience", 0, 80, 1, "exp_years")
-#         education = st.selectbox("Education Required", options=df_original["education_required"].unique())
-#         industry = st.selectbox("Industry", options=df_original["industry"].unique())
-#         company_size = st.selectbox("Company Size", options=["Startup", "Small", "Medium", "Large", "Enterprise"])
-#     with col2:
-#         interview_rounds = num_input_slider("Interview Rounds", 0, 15, 1, "interview_rounds")
-#         year = num_input_slider("Year", 2020, 2030, 1, "year")
-#         work_mode = st.selectbox("Work Mode", options=["Remote", "Hybrid", "Onsite"])
-#         weekly_hours = num_input_slider("Weekly Hours", 0.0, 168.0, 0.1, "weekly_hours", fmt="%.1f")
-#         company_rating = num_input_slider("Company Rating", 0.00, 5.00, 0.01, "company_rating", fmt="%.2f")
-#         job_openings = num_input_slider("Job Openings", 0, 100, 1, "job_openings")
-#         hiring_difficulty = num_input_slider("Hiring Difficulty Score", 0.00, 100.00, 0.01, "hiring_diff", fmt="%.2f")
-#         layoff_risk = num_input_slider("Layoff Risk", 0.00, 1.00, 0.01, "layoff_risk", fmt="%.2f")
-#     with col3:
-#         ai_adoption = num_input_slider("AI Adoption Score", 0, 100, 1, "ai_adoption")
-#         company_funding = num_input_slider("Company Funding (Billion USD)", 0.00, 10.00, 0.01, "company_funding", fmt="%.2f")
-#         economic_index = num_input_slider("Economic Index", 0.00, 100.00, 0.01, "economic_index", fmt="%.2f")
-#         ai_maturity = num_input_slider("AI Maturity Years", 0, 30, 1, "ai_maturity")
-#         offer_acceptance = num_input_slider("Offer Acceptance Rate", 0.00, 100.00, 0.01, "offer_acceptance", fmt="%.2f")
-#         tax_rate = num_input_slider("Tax Rate Percent", 0.0, 100.0, 0.1, "tax_rate", fmt="%.1f")
-#         vacation_days = num_input_slider("Vacation Days", 0, 180, 1, "vacation_days")
-#         skill_demand = num_input_slider("Skill Demand Score", 0, 100, 1, "skill_demand")
-#     with col4:
-#         automation_risk = num_input_slider("Automation Risk", 0, 100, 1, "automation_risk")
-#         job_security = num_input_slider("Job Security Score", 0, 100, 1, "job_security")
-#         career_growth = num_input_slider("Career Growth Score", 0, 100, 1, "career_growth")
-#         work_life_balance = num_input_slider("Work-Life Balance Score", 0, 100, 1, "work_life_balance")
-#         promotion_speed = num_input_slider("Promotion Speed", 0, 100, 1, "promotion_speed")
-#         salary_percentile = num_input_slider("Salary Percentile", 0, 100, 1, "salary_percentile")
-#         cost_of_living = num_input_slider("Cost of Living Index", 0.00, 10.00, 0.01, "cost_of_living", fmt="%.1f")
-#         employee_satisfaction = num_input_slider("Employee Satisfaction", 0, 100, 1, "employee_satisfaction")
+        # Callbacks to keep slider and number input synced
+        def update_num():
+            st.session_state[f"{key}_n"] = st.session_state[f"{key}_s"]
 
-#     # Button to trigger prediction
-#     if st.button("Predict Salary", type="primary", key="single_predict"):
-#         with st.spinner("Calculating..."):
-#             input_data = {
-#                 "country": country,
-#                 "job_role": job_role,
-#                 "ai_specialization": ai_spec,
-#                 "experience_level": exp_level,
-#                 "experience_years": exp_years,
-#                 "education_required": education,
-#                 "industry": industry,
-#                 "company_size": company_size,
-#                 "interview_rounds": interview_rounds,
-#                 "year": year,
-#                 "work_mode": work_mode,
-#                 "weekly_hours": weekly_hours,
-#                 "company_rating": company_rating,
-#                 "job_openings": job_openings,
-#                 "hiring_difficulty_score": hiring_difficulty,
-#                 "layoff_risk": layoff_risk,
-#                 "ai_adoption_score": ai_adoption,
-#                 "company_funding_billion": company_funding,
-#                 "economic_index": economic_index,
-#                 "ai_maturity_years": ai_maturity,
-#                 "offer_acceptance_rate": offer_acceptance,
-#                 "tax_rate_percent": tax_rate,
-#                 "vacation_days": vacation_days,
-#                 "skill_demand_score": skill_demand,
-#                 "automation_risk": automation_risk,
-#                 "job_security_score": job_security,
-#                 "career_growth_score": career_growth,
-#                 "work_life_balance_score": work_life_balance,
-#                 "promotion_speed": promotion_speed,
-#                 "salary_percentile": salary_percentile,
-#                 "cost_of_living_index": cost_of_living,
-#                 "employee_satisfaction": employee_satisfaction,
-#             }
+        def update_slide():
+            st.session_state[f"{key}_s"] = st.session_state[f"{key}_n"]
 
-#             # Convert to dataframe
-#             input_df = pd.DataFrame([input_data])
+        c_slide, c_num = st.columns([0.65, 0.35])
+        with c_slide:
+            st.slider(label, min_val, max_val, st.session_state[f"{key}_s"], step=step, key=f"{key}_s", on_change=update_num, format=fmt)
 
-#             # Predict
-#             prediction_df = predict_model(model, data=input_df)
-#             predicted_salary = prediction_df["prediction_label"].iloc[0]
+        with c_num:
+            st.number_input(" ", step=step, key=f"{key}_n", on_change=update_slide, format=fmt, label_visibility="collapsed")
 
-#             # Display result
-#             st.success("Prediction Successful!")
-#             st.markdown(
-#                 f"""
-#             <div style="padding:20px;border-radius:10px;background-color:#f0f2f6;text-align:center;">
-#                 <h3 style="color:#1f77b4;">Estimated Annual Salary</h3>
-#                 <h1 style="font-size:48px;color:#0a0a0a;">${predicted_salary:,.2f} USD</h1>
-#             </div>
-#             """,
-#                 unsafe_allow_html=True,
-#             )
+        # Show custom error message if a value was just clamped
+        if clamped:
+            st.error(f"Value out of range. It has been automatically changed to {clamp_val}.")
+
+        return st.session_state[f"{key}_n"]
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        age = num_input_slider("Age", 18, 100, 1, "age")
+        blood_pressure = st.selectbox("Blood Pressure", options=["High", "Normal", "Low"])
+        smoking = st.checkbox("Smoking")
+        family_history = st.checkbox("Family History")
+
+    with col2:
+        bmi = num_input_slider("BMI", 10.0, 50.0, 0.1, "bmi", "%.1f")
+        cholesterol = st.selectbox("Cholesterol", options=data["Cholesterol"].unique())
+        alcohol = st.checkbox("Alcohol Consumption")
+
+    with col3:
+        gender = st.selectbox("Gender", options=data["Gender"].unique())
+        glucose = st.selectbox("Glucose", options=data["Glucose"].unique())
+        exercise = st.checkbox("Exercise")
+
+# Button to trigger prediction
+if st.button("Predict Diseases", type="primary", key="single_predict"):
+    with st.spinner("Predicting..."):
+        input_data = {
+            "Age": age,
+            "Gender": gender,
+            "Cholesterol": cholesterol,
+            "Glucose": glucose,
+            "Smoking": smoking,
+            "Alcohol Consumption": alcohol,
+            "Exercise": exercise,
+            "BMI": bmi,
+            "Family History": family_history,
+            "Blood Pressure": blood_pressure,
+        }
+
+    # Convert and format dataframe
+    input_df = pd.DataFrame([input_data])
+    input_df["Gender"] = input_df["Gender"].replace({"Male": 0, "Female": 1})
+
+    normal_high_cols = ["Cholesterol", "Glucose"]
+    input_df[normal_high_cols] = input_df[normal_high_cols].replace({"Normal": 0, "High": 1})
+
+    yes_no_cols = ["Smoking", "Alcohol Consumption", "Exercise", "Family History"]
+    input_df[yes_no_cols] = input_df[yes_no_cols].replace({False: 0, True: 1})
+
+    input_df["Blood Pressure_Low"] = int(blood_pressure == "Low")
+    input_df["Blood Pressure_Normal"] = int(blood_pressure == "Normal")
+    input_df = input_df.drop(columns=["Blood Pressure"])
+
+    # Predictions
+    def display_prediction_metric(name, model, container):
+        prediction_df = classification.predict_model(model, data=input_df)
+
+        prediction = prediction_df["prediction_label"].iloc[0]
+        prediction_text = "Yes" if int(prediction) == 1 else "No"
+
+        score = None
+        if "prediction_score" in prediction_df.columns:
+            score = float(prediction_df["prediction_score"].iloc[0])
+
+        with container:
+            st.metric(
+                label=name,
+                value=prediction_text,
+                delta=(f"Score: {score:.1%}" if score is not None else "Score unavailable"),
+            )
+
+    # Ensure Disease is first
+    ordered_models = sorted(
+        models.items(),
+        key=lambda item: (item[0] != "Disease", item[0]),
+    )
+
+    disease_model = ordered_models[0]
+    other_models = ordered_models[1:]
+
+    # Disease on its own row
+    st.subheader("Overall Disease")
+    disease_container = st.container()
+    display_prediction_metric(
+        disease_model[0],
+        disease_model[1],
+        disease_container,
+    )
+
+    # Remaining models in rows of five
+    st.subheader("Individual Conditions")
+
+    for row_start in range(0, len(other_models), 5):
+        row_models = other_models[row_start : row_start + 5]
+        metric_columns = st.columns(5)
+
+        for column, (name, model) in zip(metric_columns, row_models):
+            display_prediction_metric(name, model, column)
 
 # # Tab 2 - batch prediction
 # with tab2:
