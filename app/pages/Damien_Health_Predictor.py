@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -22,7 +23,10 @@ def get_models(folder_path: Path):
     if not folder_path.exists():
         return None
 
-    return {entry.stem.replace("_", " ").replace("-", "'"): classification.load_model(entry.with_suffix("")) for entry in folder_path.glob("*.pkl")}
+    with open(folder_path / "model_metrics.json", "r") as f:
+        metrics = json.load(f)
+
+    return {entry.stem.replace("_", " ").replace("-", "'"): classification.load_model(entry.with_suffix("")) for entry in folder_path.glob("*.pkl")}, metrics
 
 
 @st.cache_data
@@ -67,7 +71,7 @@ if cfg is None:
 
 model_folder = project_root / cfg.model_path
 dataset_path = project_root / cfg.bronze_dataset_path
-models = get_models(model_folder)
+models, metrics = get_models(model_folder)
 data = get_data(dataset_path)
 
 if models is None:
@@ -77,6 +81,24 @@ if models is None:
 if data is None:
     st.error(f"Dataset not found at `{dataset_path}`.")
     st.stop()
+
+st.subheader("Model Performance (AUC)")
+ordered_metrics = sorted(
+    metrics.items(),
+    key=lambda item: (item[0] != "Disease", item[0]),
+)
+
+st.metric(
+    label=ordered_metrics[0][0],
+    value=f"{ordered_metrics[0][1]:.1%}",
+)
+
+for row_start in range(1, len(ordered_metrics), 5):
+    metric_columns = st.columns(5)
+    for column, (name, auc) in zip(metric_columns, ordered_metrics[row_start : row_start + 5]):
+        with column:
+            st.metric(label=name, value=f"{auc:.1%}")
+
 
 tab1, tab2 = st.tabs(["Single Input", "Batch Upload (CSV)"])
 
