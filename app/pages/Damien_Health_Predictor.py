@@ -46,6 +46,31 @@ def get_data(dataset_path: Path):
 
     return pd.read_csv(dataset_path)
 
+def preprocess_health_data(input_df):
+    input_df = input_df.copy()
+
+    input_df["Gender"] = input_df["Gender"].replace({"Male": 0, "Female": 1})
+
+    input_df[["Cholesterol", "Glucose"]] = input_df[["Cholesterol", "Glucose"]].replace({"Normal": 0, "High": 1})
+
+    yes_no_columns = [
+        "Smoking",
+        "Alcohol Consumption",
+        "Exercise",
+        "Family History",
+    ]
+    input_df[yes_no_columns] = input_df[yes_no_columns].replace({False: 0, True: 1})
+
+    # One-hot encode every blood-pressure category consistently.
+    input_df["Blood Pressure_Low"] = (input_df["Blood Pressure"] == "Low").astype(int)
+
+    input_df["Blood Pressure_Normal"] = (input_df["Blood Pressure"] == "Normal").astype(int)
+
+    # High is the reference category: Low=0 and Normal=0 means High.
+    input_df = input_df.drop(columns=["Blood Pressure"])
+
+    return input_df
+
 
 # Load hydra config and project root
 cfg, project_root = load_hydra_config()
@@ -118,7 +143,7 @@ with tab1:
 
         c_slide, c_num = st.columns([0.65, 0.35])
         with c_slide:
-            st.slider(label, min_val, max_val, st.session_state[f"{key}_s"], step=step, key=f"{key}_s", on_change=update_num, format=fmt)
+            st.slider(label, min_val, max_val, step=step, key=f"{key}_s", on_change=update_num, format=fmt)
 
         with c_num:
             st.number_input(" ", step=step, key=f"{key}_n", on_change=update_slide, format=fmt, label_visibility="collapsed")
@@ -146,117 +171,135 @@ with tab1:
         glucose = st.selectbox("Glucose", options=data["Glucose"].unique())
         exercise = st.checkbox("Exercise")
 
-# Button to trigger prediction
-if st.button("Predict Diseases", type="primary", key="single_predict"):
-    with st.spinner("Predicting..."):
-        input_data = {
-            "Age": age,
-            "Gender": gender,
-            "Cholesterol": cholesterol,
-            "Glucose": glucose,
-            "Smoking": smoking,
-            "Alcohol Consumption": alcohol,
-            "Exercise": exercise,
-            "BMI": bmi,
-            "Family History": family_history,
-            "Blood Pressure": blood_pressure,
-        }
+    # Button to trigger prediction
+    if st.button("Predict Diseases", type="primary", key="single_predict"):
+        with st.spinner("Predicting..."):
+            input_data = {
+                "Age": age,
+                "Gender": gender,
+                "Cholesterol": cholesterol,
+                "Glucose": glucose,
+                "Smoking": smoking,
+                "Alcohol Consumption": alcohol,
+                "Exercise": exercise,
+                "BMI": bmi,
+                "Family History": family_history,
+                "Blood Pressure": blood_pressure,
+            }
 
-    # Convert and format dataframe
-    input_df = pd.DataFrame([input_data])
-    input_df["Gender"] = input_df["Gender"].replace({"Male": 0, "Female": 1})
+        # Convert and format dataframe
+        input_df = preprocess_health_data(pd.DataFrame([input_data]))
 
-    normal_high_cols = ["Cholesterol", "Glucose"]
-    input_df[normal_high_cols] = input_df[normal_high_cols].replace({"Normal": 0, "High": 1})
+        # Predictions
+        def display_prediction_metric(name, model, container):
+            prediction_df = classification.predict_model(model, data=input_df)
 
-    yes_no_cols = ["Smoking", "Alcohol Consumption", "Exercise", "Family History"]
-    input_df[yes_no_cols] = input_df[yes_no_cols].replace({False: 0, True: 1})
+            prediction = prediction_df["prediction_label"].iloc[0]
+            prediction_text = "Yes" if int(prediction) == 1 else "No"
 
-    input_df["Blood Pressure_Low"] = int(blood_pressure == "Low")
-    input_df["Blood Pressure_Normal"] = int(blood_pressure == "Normal")
-    input_df = input_df.drop(columns=["Blood Pressure"])
+            score = None
+            if "prediction_score" in prediction_df.columns:
+                score = float(prediction_df["prediction_score"].iloc[0])
 
-    # Predictions
-    def display_prediction_metric(name, model, container):
-        prediction_df = classification.predict_model(model, data=input_df)
+            with container:
+                st.metric(
+                    label=name,
+                    value=prediction_text,
+                    delta=(f"Score: {score:.1%}" if score is not None else "Score unavailable"),
+                )
 
-        prediction = prediction_df["prediction_label"].iloc[0]
-        prediction_text = "Yes" if int(prediction) == 1 else "No"
+        # Ensure Disease is first
+        ordered_models = sorted(
+            models.items(),
+            key=lambda item: (item[0] != "Disease", item[0]),
+        )
 
-        score = None
-        if "prediction_score" in prediction_df.columns:
-            score = float(prediction_df["prediction_score"].iloc[0])
+        disease_model = ordered_models[0]
+        other_models = ordered_models[1:]
 
-        with container:
-            st.metric(
-                label=name,
-                value=prediction_text,
-                delta=(f"Score: {score:.1%}" if score is not None else "Score unavailable"),
+        # Disease on its own row
+        st.subheader("Overall Disease")
+        disease_container = st.container()
+        display_prediction_metric(
+            disease_model[0],
+            disease_model[1],
+            disease_container,
+        )
+
+        # Remaining models in rows of five
+        st.subheader("Individual Conditions")
+
+        for row_start in range(0, len(other_models), 5):
+            row_models = other_models[row_start : row_start + 5]
+            metric_columns = st.columns(5)
+
+            for column, (name, model) in zip(metric_columns, row_models):
+                display_prediction_metric(name, model, column)
+
+# Tab 2 - batch prediction
+with tab2:
+    st.write("Upload a CSV file containing multiple patient information entries to generate bulk predictions.")
+    st.info("**Note:** The CSV must contain the same columns as the training dataset. If any of the target columns are present, they will be automatically ignored/removed to prevent data leakage.")
+    target_columns = [
+        "Disease",
+        "Heart Disease",
+        "Diabetes",
+        "Stroke",
+        "Kidney Disease",
+        "Cancer",
+        "Alzheimer's Disease",
+        "COPD",
+        "Liver Disease",
+        "Parkinson's Disease",
+        "Tuberculosis",
+    ]
+
+    uploaded_file = st.file_uploader(
+        "Choose a CSV file",
+        type="csv",
+        key="batch_uploader",
+    )
+
+    if uploaded_file is not None:
+        try:
+            batch_df = pd.read_csv(uploaded_file)
+            batch_df.columns = batch_df.columns.str.strip()
+
+            # Remove target columns if they are included in the upload.
+            batch_features = batch_df.drop(
+                columns=target_columns,
+                errors="ignore",
             )
+            batch_features = preprocess_health_data(batch_features)
 
-    # Ensure Disease is first
-    ordered_models = sorted(
-        models.items(),
-        key=lambda item: (item[0] != "Disease", item[0]),
-    )
+            st.subheader("Uploaded Data Preview")
+            st.dataframe(batch_features.head(), width="stretch")
 
-    disease_model = ordered_models[0]
-    other_models = ordered_models[1:]
+            if st.button("Generate Batch Predictions", type="primary"):
+                with st.spinner("Processing batch..."):
+                    results = batch_features.copy()
 
-    # Disease on its own row
-    st.subheader("Overall Disease")
-    disease_container = st.container()
-    display_prediction_metric(
-        disease_model[0],
-        disease_model[1],
-        disease_container,
-    )
+                    for name, model in models.items():
+                        prediction_df = classification.predict_model(
+                            model,
+                            data=batch_features,
+                        )
 
-    # Remaining models in rows of five
-    st.subheader("Individual Conditions")
+                        results[f"{name} Prediction"] = prediction_df["prediction_label"].replace({0: "No", 1: "Yes"}).values
 
-    for row_start in range(0, len(other_models), 5):
-        row_models = other_models[row_start : row_start + 5]
-        metric_columns = st.columns(5)
+                        if "prediction_score" in prediction_df.columns:
+                            results[f"{name} Score"] = prediction_df["prediction_score"].values
 
-        for column, (name, model) in zip(metric_columns, row_models):
-            display_prediction_metric(name, model, column)
+                    st.subheader("Batch Prediction Results")
+                    st.dataframe(results, width="stretch")
 
-# # Tab 2 - batch prediction
-# with tab2:
-#     st.write("Upload a CSV file containing multiple job entries to generate bulk predictions.")
-#     st.info("**Note:** The CSV must contain the same columns as the training dataset. If the `salary_usd` or `bonus_usd` columns are present, they will be automatically ignored/removed to prevent data leakage.")
-#     uploaded_file = st.file_uploader("Choose a CSV file", type="csv", key="batch_uploader")
+                    csv = results.to_csv(index=False).encode("utf-8")
+                    st.download_button(
+                        "Download Predictions",
+                        data=csv,
+                        file_name="health_predictions.csv",
+                        mime="text/csv",
+                    )
 
-#     if uploaded_file is not None:
-#         try:
-#             batch_df = pd.read_csv(uploaded_file, sep=None, engine="python")
-#             batch_df.columns = batch_df.columns.str.strip()
-#             st.subheader("Uploaded Data Preview")
-#             st.dataframe(batch_df.head(5), use_container_width=True)
-#             # Clean batch data (drop target and leakage features if they exist)
-#             cols_to_drop = ["salary_usd", "bonus_usd", "id"]
-#             for col in cols_to_drop:
-#                 if col in batch_df.columns:
-#                     batch_df = batch_df.drop(col, axis=1)
-
-#             # Predict
-#             if st.button("Generate Batch Predictions", type="primary", key="batch_predict"):
-#                 with st.spinner("Processing batch..."):
-#                     predictions = predict_model(model, data=batch_df)
-#                     st.subheader("Predictions Result")
-#                     # Format the prediction column for display
-#                     predictions["Predicted_Salary_USD"] = predictions["prediction_label"].apply(lambda x: f"${x:,.2f}")
-#                     # Show relevant output
-#                     display_cols = predictions.columns.tolist()
-#                     # Hide raw prediction_label
-#                     if "prediction_label" in display_cols:
-#                         display_cols.remove("prediction_label")
-#                     st.dataframe(predictions[display_cols], use_container_width=True)
-#                     # Provide download button for results
-#                     csv = predictions.to_csv(index=False).encode("utf-8")
-#                     st.download_button(label="Download Predictions as CSV", data=csv, file_name="salary_predictions.csv", mime="text/csv")
-#                     st.success("Batch prediction completed successfully!")
-
-#         except Exception as e:
-#             st.error(f"An error occurred while processing the file: {e}")
+        except Exception as error:
+            st.error(f"An error occurred: {error}")
