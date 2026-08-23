@@ -1,0 +1,13 @@
+{
+    "Disease": 0.5804,
+    "Heart Disease": 0.5774,
+    "Diabetes": 0.5707,
+    "Stroke": 0.5856,
+    "Kidney Disease": 0.5984,
+    "Cancer": 0.5626,
+    "Alzheimer's Disease": 0.5941,
+    "COPD": 0.6057,
+    "Liver Disease": 0.5415,
+    "Parkinson's Disease": 0.5415,
+    "Tuberculosis": 0.6721
+}
