@@ -1,8 +1,12 @@
-import streamlit as st
-import pandas as pd
 import os
+
+import pandas as pd
+import streamlit as st
+from hydra import compose
+from hydra.core.global_hydra import GlobalHydra
+from hydra.initialize import initialize_config_dir
 from pycaret.regression import load_model, predict_model
-from hydra import initialize_config_dir, compose
+
 
 # Load hydra
 @st.cache_resource
@@ -12,8 +16,14 @@ def load_hydra_config():
     conf_dir = os.path.join(project_root, "conf")
     if not os.path.exists(conf_dir):
         return None, None
-    with initialize_config_dir(config_dir=conf_dir, version_base=None):
-        cfg = compose(config_name="AI_Jobs_config")
+
+    GlobalHydra.instance().clear()
+    try:
+        with initialize_config_dir(config_dir=conf_dir, version_base=None):
+            cfg = compose(config_name="AI_Jobs_config")
+    finally:
+        GlobalHydra.instance().clear()
+
     return cfg, project_root
 
 # Load model
