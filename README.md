@@ -1,7 +1,7 @@
 ### Team Information:
 Team 4
-Ren Xiaoyao (AI Jobs Dataset, AI Jobs Predictor Model,
-Damien Leong
+Ren Xiaoyao (AI Jobs Dataset, AI Jobs Predictor Model, Testing App, Hydra)<br>
+Damien Leong (Healthcare Disease Dataset, Health Predictor Model, App Deployment, DVC, Poetry)<br>
 
 ### Project / Folder Structure
 Machine-Learning-Operations/<br>
