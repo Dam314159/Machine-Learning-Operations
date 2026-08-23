@@ -15,7 +15,7 @@ def load_hydra_config():
     if not os.path.exists(conf_dir):
         return None, None
 
-    OmegaConf.load(conf_dir / "AI_Jobs_config.yaml")
+    cfg = OmegaConf.load(os.path.join(conf_dir, "AI_Jobs_config.yaml"))
     return cfg, project_root
 
 # Load model
