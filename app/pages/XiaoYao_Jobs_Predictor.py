@@ -2,9 +2,7 @@ import os
 
 import pandas as pd
 import streamlit as st
-from hydra import compose
-from hydra.core.global_hydra import GlobalHydra
-from hydra.initialize import initialize_config_dir
+from omegaconf import OmegaConf
 from pycaret.regression import load_model, predict_model
 
 
@@ -17,13 +15,7 @@ def load_hydra_config():
     if not os.path.exists(conf_dir):
         return None, None
 
-    GlobalHydra.instance().clear()
-    try:
-        with initialize_config_dir(config_dir=conf_dir, version_base=None):
-            cfg = compose(config_name="AI_Jobs_config")
-    finally:
-        GlobalHydra.instance().clear()
-
+    OmegaConf.load(conf_dir / "AI_Jobs_config.yaml")
     return cfg, project_root
 
 # Load model
