@@ -4,31 +4,31 @@ Ren Xiaoyao (AI Jobs Dataset, AI Jobs Predictor Model,
 Damien Leong
 
 ### Project / Folder Structure
-Machine-Learning-Operations/
-├── app/                              # Streamlit web application
-│   ├── Home.py                       # Main entry point for Streamlit navigation
-│   └── pages/                        # Individual prediction pages
-│       ├── XiaoYao_Jobs_Predictor.py # AI Jobs Salary Predictor UI & Logic
-│       └── Damien_Health_Predictor.py# Health Disease Predictor UI & Logic
-├── conf/                             # Hydra configuration files
-│   ├── AI_Jobs_config.yaml           # Config for paths (data/model) for AI Jobs
-│   └── Health_config.yaml            # Config for paths for Health dataset
-├── data/                             # Datasets (tracked by DVC)
-│   ├── global_ai_jobs.csv
-│   └── bronze_healthcare_disease_prediction_dataset.csv
-├── dvc-storage/                      # Local DVC remote storage for data versioning
-├── models/                           # Saved PyCaret pipelines (.pkl)
-│   ├── AI_Jobs_model.pkl
-│   └── Health_model.pkl
-├── notebooks/                        # Jupyter notebooks for EDA and Model Training
-│   ├── XiaoYao_AI_Jobs_EDA_and_Training.ipynb
-│   └── Damien_Health_EDA_and_Training.ipynb
-├── .gitattributes                    # Git LFS / binary file tracking rules
-├── .gitignore                        # Files ignored by Git (venv, cache, etc.)
-├── pyproject.toml                    # Poetry dependency management file
-├── poetry.lock                       # Locked dependencies for reproducibility
-├── setup.sh                          # Streamlit Cloud setup script (runs dvc pull)
-└── README.md                         # This file
+Machine-Learning-Operations/<br>
+├── app/                              # Streamlit web application<br>
+│   ├── Home.py                       # Main entry point for Streamlit navigation<br>
+│   └── pages/                        # Individual prediction pages<br>
+│       ├── XiaoYao_Jobs_Predictor.py # AI Jobs Salary Predictor UI & Logic<br>
+│       └── Damien_Health_Predictor.py# Health Disease Predictor UI & Logic<br>
+├── conf/                             # Hydra configuration files<br>
+│   ├── AI_Jobs_config.yaml           # Config for paths (data/model) for AI Jobs<br>
+│   └── Health_config.yaml            # Config for paths for Health dataset<br>
+├── data/                             # Datasets (tracked by DVC)<br>
+│   ├── global_ai_jobs.csv<br>
+│   └── bronze_healthcare_disease_prediction_dataset.csv<br>
+├── dvc-storage/                      # Local DVC remote storage for data versioning<br>
+├── models/                           # Saved PyCaret pipelines (.pkl)<br>
+│   ├── AI_Jobs_model.pkl<br>
+│   └── Health_model.pkl<br>
+├── notebooks/                        # Jupyter notebooks for EDA and Model Training<br>
+│   ├── XiaoYao_AI_Jobs_EDA_and_Training.ipynb<br>
+│   └── Damien_Health_EDA_and_Training.ipynb<br>
+├── .gitattributes                    # Git LFS / binary file tracking rules<br>
+├── .gitignore                        # Files ignored by Git (venv, cache, etc.)<br>
+├── pyproject.toml                    # Poetry dependency management file<br>
+├── poetry.lock                       # Locked dependencies for reproducibility<br>
+├── setup.sh                          # Streamlit Cloud setup script (runs dvc pull)<br>
+└── README.md                         # This file<br>
 
 ### Deployment Guide
 1. `git clone https://github.com/Dam314159/Machine-Learning-Operations`
@@ -50,11 +50,11 @@ Single Input: For real-time prediction of a single record.
 Batch Upload (CSV): For generating bulk predictions.
 
 Single Input Prediction:
-Fill in the form fields (Country, Job Role, sliders for numerical values, etc.).
-Click the "Predict Salary" (or equivalent) button.
+Fill in the form fields (Country, BMI, sliders for numerical values, etc.).
+Click the "Predict" button.
 
 Batch Prediction:
-Upload a CSV file containing the required columns (ensure it uses the correct delimiter, e.g., | or ,).
+Upload a CSV file containing the required columns.
 Click "Generate Batch Predictions".
 
 ### URLS
